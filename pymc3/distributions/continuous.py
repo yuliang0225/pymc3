@@ -2356,6 +2356,104 @@ class LogitNormal(UnitContinuous):
                                                                 get_variable_name(sd))
 
 
+class Tweedie(PositiveContinuous):
+    R"""
+    Tweedie (compound Poisson-gamma) log-likelihood.
+
+    A Tweedie random variable is the sum of a set of gamma-distributed random 
+    variables, which are distributed according to a Poisson distribution with 
+    mean mu^(2-theta)/((2-theta)*phi). The summed gamma random variables have 
+    shape and scale parameters (2-theta)/(theta-1) and 
+    phi*(theta-1)*mu^(theta-1), respetively.
+
+    The pdf of this distribution is
+
+    .. math::
+        f(x \mid \mu, \phi, \theta) = 
+
+    .. plot::
+
+        import matplotlib.pyplot as plt
+        import numpy as np
+        import scipy.stats as st
+        from scipy.special import logit
+        plt.style.use('seaborn-darkgrid')
+        x = np.linspace(0.0001, 0.9999, 500)
+        mus = [0., 0., 0., 1.]
+        sds = [0.3, 1., 2., 1.]
+        for mu, sd in  zip(mus, sds):
+            pdf = st.norm.pdf(logit(x), loc=mu, scale=sd) * 1/(x * (1-x))
+            plt.plot(x, pdf, label=r'$\mu$ = {}, $\sigma$ = {}'.format(mu, sd))
+            plt.legend(loc=1)
+        plt.show()
+
+    ========  ==========================================
+    Support   :math:`x \ge 0`
+    Mean      :math:`\mu`
+    Variance  :math:`\phi \mu^{\theta}`
+    ========  ==========================================
+
+    Parameters
+    ----------
+    mu : float
+        Location parameter.
+    phi : float
+        Scale parameter (phi > 0).
+    theta : float
+        Shape parameter (1 < theta < 2).
+    M : int
+        Number of gamma mixture components (M = 1,2,3,...).
+    """
+
+    def __init__(self, mu, phi, theta, M=1, *args, **kwargs):
+        super(Tweedie, self).__init__(*args, **kwargs)
+        self.mean = mu = tt.as_tensor_variable(mu)
+        self.phi = phi = floatX(tt.as_tensor_variable(phi))
+        self.theta = theta = floatX(tt.as_tensor_variable(phi))
+        self.M = M
+
+        self.lam = 1 / phi * mu^(2 - theta) / (2 - theta)
+        self.alpha = (2 - theta) / (theta - 1)
+        self.beta = 1 / phi * mu^(1 - theta) / (theta - 1)
+        self.pois = Poisson.dist(self.lam)
+        self.gammas = [Gamma.dist(m*self.alpha, self.beta) for m in range(M)]
+
+        assert_negative_support(phi, 'phi', 'Tweedie')
+
+    def random(self, point=None, size=None, repeat=None):
+        mu, kappa = draw_values([self.mu, self.kappa],
+                                point=point)
+        return generate_samples(stats.vonmises.rvs, loc=mu, kappa=kappa,
+                                dist_shape=self.shape,
+                                size=size)
+
+    def logp(self, value):
+        lam = self.lam
+        pois = self.pois
+        gammas = self.gammas
+
+        logp_val = tt.switch(
+            tt.gt(value, 0),
+            tt.squeeze(tt.stack([pois.logp(m) + gamma.logp(value)
+                                    for m,gamma in enumerate(gammas)],
+                                       axis=1)),
+            -lam)
+
+        return bound(log_val,
+                     phi > 0, theta > 1, theta < 2, value >= 0)
+
+    def _repr_latex_(self, name=None, dist=None):
+        if dist is None:
+            dist = self
+        phi = dist.phi
+        mu = dist.mu
+        theta = dist.theta
+        name = r'\text{%s}' % name
+        return r'${} \sim \text{{Tweedie}}(\mathit{{mu}}={},~\mathit{{phi}}={},~\mathit{{theta}}={})$'.format(name,
+                                                                get_variable_name(mu),get_variable_name(phi),
+                                                                get_variable_name(theta))
+
+
 class Interpolated(Continuous):
     R"""
     Univariate probability distribution defined as a linear interpolation
