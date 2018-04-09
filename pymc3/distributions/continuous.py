@@ -322,8 +322,8 @@ class Normal(Continuous):
         mu = dist.mu
         name = r'\text{%s}' % name
         return r'${} \sim \text{{Normal}}(\mathit{{mu}}={},~\mathit{{sd}}={})$'.format(name,
-                                                                get_variable_name(mu),
-                                                                get_variable_name(sd))
+                          get_variable_name(mu),
+                          get_variable_name(sd))
 
 
 class HalfNormal(PositiveContinuous):
@@ -421,7 +421,7 @@ class HalfNormal(PositiveContinuous):
         sd = dist.sd
         name = r'\text{%s}' % name
         return r'${} \sim \text{{HalfNormal}}(\mathit{{sd}}={})$'.format(name,
-                                                                get_variable_name(sd))
+                          get_variable_name(sd))
 
 
 class Wald(PositiveContinuous):
@@ -571,9 +571,9 @@ class Wald(PositiveContinuous):
         alpha = dist.alpha
         name = r'\text{%s}' % name
         return r'${} \sim \text{{Wald}}(\mathit{{mu}}={},~\mathit{{lam}}={},~\mathit{{alpha}}={})$'.format(name,
-                                                                get_variable_name(mu),
-                                                                get_variable_name(lam),
-                                                                get_variable_name(alpha))
+                          get_variable_name(mu),
+                          get_variable_name(lam),
+                          get_variable_name(alpha))
 
 
 class Beta(UnitContinuous):
@@ -695,8 +695,8 @@ class Beta(UnitContinuous):
         beta = dist.beta
         name = r'\text{%s}' % name
         return r'${} \sim \text{{Beta}}(\mathit{{alpha}}={},~\mathit{{alpha}}={})$'.format(name,
-                                                                get_variable_name(alpha),
-                                                                get_variable_name(beta))
+                          get_variable_name(alpha),
+                          get_variable_name(beta))
 
 
 class Exponential(PositiveContinuous):
@@ -763,7 +763,7 @@ class Exponential(PositiveContinuous):
         lam = dist.lam
         name = r'\text{%s}' % name
         return r'${} \sim \text{{Exponential}}(\mathit{{lam}}={})$'.format(name,
-                                                                get_variable_name(lam))
+                          get_variable_name(lam))
 
 class Laplace(Continuous):
     R"""
@@ -835,8 +835,8 @@ class Laplace(Continuous):
         mu = dist.mu
         name = r'\text{%s}' % name
         return r'${} \sim \text{{Laplace}}(\mathit{{mu}}={},~\mathit{{b}}={})$'.format(name,
-                                                                get_variable_name(mu),
-                                                                get_variable_name(b))
+                          get_variable_name(mu),
+                          get_variable_name(b))
 
 
 class Lognormal(PositiveContinuous):
@@ -941,8 +941,8 @@ class Lognormal(PositiveContinuous):
         mu = dist.mu
         name = r'\text{%s}' % name
         return r'${} \sim \text{{Lognormal}}(\mathit{{mu}}={},~\mathit{{tau}}={})$'.format(name,
-                                                                get_variable_name(mu),
-                                                                get_variable_name(tau))
+                          get_variable_name(mu),
+                          get_variable_name(tau))
 
 
 class StudentT(Continuous):
@@ -1048,9 +1048,9 @@ class StudentT(Continuous):
         lam = dist.lam
         name = r'\text{%s}' % name
         return r'${} \sim \text{{StudentT}}(\mathit{{nu}}={},~\mathit{{mu}}={},~\mathit{{lam}}={})$'.format(name,
-                                                                get_variable_name(nu),
-                                                                get_variable_name(mu),
-                                                                get_variable_name(lam))
+                          get_variable_name(nu),
+                          get_variable_name(mu),
+                          get_variable_name(lam))
 
 
 class Pareto(PositiveContinuous):
@@ -1140,8 +1140,8 @@ class Pareto(PositiveContinuous):
         m = dist.m
         name = r'\text{%s}' % name
         return r'${} \sim \text{{Pareto}}(\mathit{{alpha}}={},~\mathit{{m}}={})$'.format(name,
-                                                                get_variable_name(alpha),
-                                                                get_variable_name(m))
+                          get_variable_name(alpha),
+                          get_variable_name(m))
 
 
 class Cauchy(Continuous):
@@ -1221,8 +1221,8 @@ class Cauchy(Continuous):
         beta = dist.beta
         name = r'\text{%s}' % name
         return r'${} \sim \text{{Cauchy}}(\mathit{{alpha}}={},~\mathit{{beta}}={})$'.format(name,
-                                                                get_variable_name(alpha),
-                                                                get_variable_name(beta))
+                          get_variable_name(alpha),
+                          get_variable_name(beta))
 
 
 class HalfCauchy(PositiveContinuous):
@@ -1293,7 +1293,7 @@ class HalfCauchy(PositiveContinuous):
         beta = dist.beta
         name = r'\text{%s}' % name
         return r'${} \sim \text{{HalfCauchy}}(\mathit{{beta}}={})$'.format(name,
-                                                                get_variable_name(beta))
+                          get_variable_name(beta))
 
 class Gamma(PositiveContinuous):
     R"""
@@ -1403,8 +1403,8 @@ class Gamma(PositiveContinuous):
         alpha = dist.alpha
         name = r'\text{%s}' % name
         return r'${} \sim \text{{Gamma}}(\mathit{{alpha}}={},~\mathit{{beta}}={})$'.format(name,
-                                                                get_variable_name(alpha),
-                                                                get_variable_name(beta))
+                          get_variable_name(alpha),
+                          get_variable_name(beta))
 
 
 class InverseGamma(PositiveContinuous):
@@ -1493,8 +1493,8 @@ class InverseGamma(PositiveContinuous):
         alpha = dist.alpha
         name = r'\text{%s}' % name
         return r'${} \sim \text{{InverseGamma}}(\mathit{{alpha}}={},~\mathit{{beta}}={})$'.format(name,
-                                                                get_variable_name(alpha),
-                                                                get_variable_name(beta))
+                          get_variable_name(alpha),
+                          get_variable_name(beta))
 
 
 class ChiSquared(Gamma):
@@ -1538,7 +1538,7 @@ class ChiSquared(Gamma):
     def __init__(self, nu, *args, **kwargs):
         self.nu = nu = tt.as_tensor_variable(nu)
         super(ChiSquared, self).__init__(alpha=nu / 2., beta=0.5,
-                                         *args, **kwargs)
+                      *args, **kwargs)
 
     def _repr_latex_(self, name=None, dist=None):
         if dist is None:
@@ -1546,7 +1546,7 @@ class ChiSquared(Gamma):
         nu = dist.nu
         name = r'\text{%s}' % name
         return r'${} \sim \Chi^2(\mathit{{nu}}={})$'.format(name,
-                                                                get_variable_name(nu))
+                          get_variable_name(nu))
 
 
 class Weibull(PositiveContinuous):
@@ -1634,8 +1634,8 @@ class Weibull(PositiveContinuous):
         alpha = dist.alpha
         name = r'\text{%s}' % name
         return r'${} \sim \text{{Weibull}}(\mathit{{alpha}}={},~\mathit{{beta}}={})$'.format(name,
-                                                                get_variable_name(alpha),
-                                                                get_variable_name(beta))
+                          get_variable_name(alpha),
+                          get_variable_name(beta))
 
 
 class HalfStudentT(PositiveContinuous):
@@ -1731,8 +1731,8 @@ class HalfStudentT(PositiveContinuous):
         sd = dist.sd
         name = r'\text{%s}' % name
         return r'${} \sim \text{{HalfStudentT}}(\mathit{{nu}}={},~\mathit{{sd}}={})$'.format(name,
-                                                                get_variable_name(nu),
-                                                                get_variable_name(sd))
+                          get_variable_name(nu),
+                          get_variable_name(sd))
 
 
 class ExGaussian(Continuous):
@@ -1844,9 +1844,9 @@ class ExGaussian(Continuous):
         nu = dist.nu
         name = r'\text{%s}' % name
         return r'${} \sim \text{{ExGaussian}}(\mathit{{mu}}={},~\mathit{{sigma}}={},~\mathit{{nu}}={})$'.format(name,
-                                                                get_variable_name(mu),
-                                                                get_variable_name(sigma),
-                                                                get_variable_name(nu))
+                          get_variable_name(mu),
+                          get_variable_name(sigma),
+                          get_variable_name(nu))
 
 
 class VonMises(Continuous):
@@ -1923,8 +1923,8 @@ class VonMises(Continuous):
         mu = dist.mu
         name = r'\text{%s}' % name
         return r'${} \sim \text{{VonMises}}(\mathit{{mu}}={},~\mathit{{kappa}}={})$'.format(name,
-                                                                get_variable_name(mu),
-                                                                get_variable_name(kappa))
+                          get_variable_name(mu),
+                          get_variable_name(kappa))
 
 
 
@@ -2028,9 +2028,9 @@ class SkewNormal(Continuous):
         alpha = dist.alpha
         name = r'\text{%s}' % name
         return r'${} \sim \text{{Skew-Normal}}(\mathit{{mu}}={},~\mathit{{sd}}={},~\mathit{{alpha}}={})$'.format(name,
-                                                                get_variable_name(mu),
-                                                                get_variable_name(sd),
-                                                                get_variable_name(alpha))
+                          get_variable_name(mu),
+                          get_variable_name(sd),
+                          get_variable_name(alpha))
 
 
 class Triangular(Continuous):
@@ -2062,8 +2062,8 @@ class Triangular(Continuous):
         for lower, c_, upper_ in zip(lowers, cs, uppers):
             pdf = st.triang.pdf(x, loc=lower, c=c_, scale=upper_)
             plt.plot(x, pdf, label='lower = {}, c = {}, upper = {}'.format(lower,
-                                                                           lower + upper_ * c_,
-                                                                           lower + upper_))
+                                     lower + upper_ * c_,
+                                     lower + upper_))
         plt.xlabel('x', fontsize=12)
         plt.ylabel('f(x)', fontsize=12)
         plt.legend(loc=1)
@@ -2117,9 +2117,9 @@ class Triangular(Continuous):
         c = dist.c
         name = r'\text{%s}' % name
         return r'${} \sim \text{{Triangular}}(\mathit{{c}}={},~\mathit{{lower}}={},~\mathit{{upper}}={})$'.format(name,
-                                                                get_variable_name(c),
-                                                                get_variable_name(lower),
-                                                                get_variable_name(upper))
+                          get_variable_name(c),
+                          get_variable_name(lower),
+                          get_variable_name(upper))
 
 
 class Gumbel(Continuous):
@@ -2194,8 +2194,8 @@ class Gumbel(Continuous):
         mu = dist.mu
         name = r'\text{%s}' % name
         return r'${} \sim \text{{Gumbel}}(\mathit{{mu}}={},~\mathit{{beta}}={})$'.format(name,
-                                                                get_variable_name(mu),
-                                                                get_variable_name(beta))
+                          get_variable_name(mu),
+                          get_variable_name(beta))
 
 
 class Logistic(Continuous):
@@ -2272,8 +2272,8 @@ class Logistic(Continuous):
         s = dist.s
         name = r'\text{%s}' % name
         return r'${} \sim \text{{Logistic}}(\mathit{{mu}}={},~\mathit{{s}}={})$'.format(name,
-                                                                get_variable_name(mu),
-                                                                get_variable_name(s))
+                          get_variable_name(mu),
+                          get_variable_name(s))
 
 
 class LogitNormal(UnitContinuous):
@@ -2352,17 +2352,17 @@ class LogitNormal(UnitContinuous):
         mu = dist.mu
         name = r'\text{%s}' % name
         return r'${} \sim \text{{LogitNormal}}(\mathit{{mu}}={},~\mathit{{sd}}={})$'.format(name,
-                                                                get_variable_name(mu),
-                                                                get_variable_name(sd))
+                    get_variable_name(mu),
+                    get_variable_name(sd))
 
 
 class Tweedie(PositiveContinuous):
     R"""
     Tweedie (compound Poisson-gamma) log-likelihood.
 
-    A Tweedie random variable is the sum of a set of gamma-distributed random 
-    variables, which are distributed according to a Poisson distribution with 
-    mean mu^(2-theta)/((2-theta)*phi). The summed gamma random variables have 
+    A Tweedie random variable is the sum of M gamma random variables, where M
+    is, in turn, drawn from a Poisson distribution with mean 
+    mu^(2-theta)/((2-theta)*phi). Each gamma random variables has 
     shape and scale parameters (2-theta)/(theta-1) and 
     phi*(theta-1)*mu^(theta-1), respetively.
 
@@ -2405,32 +2405,41 @@ class Tweedie(PositiveContinuous):
         Number of gamma mixture components (M = 1,2,3,...).
     """
 
-    def __init__(self, mu, phi, theta, M=1, *args, **kwargs):
+    def __init__(self, mu, phi, theta, M_max=30, *args, **kwargs):
         super(Tweedie, self).__init__(*args, **kwargs)
         self.mean = mu = tt.as_tensor_variable(mu)
         self.phi = phi = floatX(tt.as_tensor_variable(phi))
         self.theta = theta = floatX(tt.as_tensor_variable(phi))
-        self.M = M
+        self.M_max = M_max
 
         self.lam = 1 / phi * mu^(2 - theta) / (2 - theta)
         self.alpha = (2 - theta) / (theta - 1)
         self.beta = 1 / phi * mu^(1 - theta) / (theta - 1)
         self.pois = Poisson.dist(self.lam)
-        self.gammas = [Gamma.dist(m*self.alpha, self.beta) for m in range(M)]
+        self.gammas = [Gamma.dist(m*self.alpha, self.beta) for m in range(M_max)]
 
         assert_negative_support(phi, 'phi', 'Tweedie')
 
     def random(self, point=None, size=None, repeat=None):
-        mu, kappa = draw_values([self.mu, self.kappa],
+        lam, alpha, beta = draw_values([self.lam, self.alpha, self.beta],
                                 point=point)
-        return generate_samples(stats.vonmises.rvs, loc=mu, kappa=kappa,
+        M = generate_samples(stats.poisson.rvs, lam,
                                 dist_shape=self.shape,
                                 size=size)
+        gammas = generate_samples(stats.gamma.rvs, alpha, scale=1. / beta,
+                                dist_shape=M,
+                                size=size)
+        return gammas.sum(1)
+        
 
     def logp(self, value):
         lam = self.lam
         pois = self.pois
         gammas = self.gammas
+
+        if pois.logp(self.M_max) > 1e-3:
+            msg = "The number of mixture components specified for Tweedie distribution may be too small. Consider increasing M."
+            warnings.warn(msg)
 
         logp_val = tt.switch(
             tt.gt(value, 0),
@@ -2450,8 +2459,8 @@ class Tweedie(PositiveContinuous):
         theta = dist.theta
         name = r'\text{%s}' % name
         return r'${} \sim \text{{Tweedie}}(\mathit{{mu}}={},~\mathit{{phi}}={},~\mathit{{theta}}={})$'.format(name,
-                                                                get_variable_name(mu),get_variable_name(phi),
-                                                                get_variable_name(theta))
+                                    get_variable_name(mu),get_variable_name(phi),
+                                    get_variable_name(theta))
 
 
 class Interpolated(Continuous):
@@ -2487,7 +2496,7 @@ class Interpolated(Continuous):
         if transform == 'interval':
             transform = transforms.interval(x_points[0], x_points[-1])
         super(Interpolated, self).__init__(transform=transform,
-                                           *args, **kwargs)
+                        *args, **kwargs)
 
         interp = InterpolatedUnivariateSpline(x_points, pdf_points, k=1, ext='zeros')
         Z = interp.integral(x_points[0], x_points[-1])
